@@ -1,44 +1,35 @@
-#include <raylib.h>
-
-typedef struct Sprite
-{
-    Texture2D texture;
-    Rectangle dest_rect;
-} Sprite;
-
+// #include <raylib.h>
+#include "base.h"
+#include "player.h"
+#include "debug.h"
 
 int main()
 {
+    float screenX = 800;
+    float screenY = 600;
     #pragma region INIT
-    InitWindow(100, 100, "RayLib Example");
+    SetConfigFlags(FLAG_WINDOW_HIGHDPI);
+    InitWindow(screenX, screenY, "RayLib Example");
+    bool glContext = true;
 
-    Texture2D playerTexture = LoadTexture("assets/sword.png");
-    Sprite player = (Sprite){
-        .texture = playerTexture,
-        .dest_rect = (Rectangle) {
-            .x = 10,
-            .y = 100,
-            .width = 100,
-            .height = 100,
-        }
-    };
+    Texture2D playerTexture = LoadTexture("assets/LuisMiniGame_Character.png");
+    Player player;
+    Physics physics;
+
+    player.PlayerEntity.entitySprite.texture = playerTexture;
+    player.PlayerEntity.entitySprite.dest_rect = {screenX - screenX/2 - playerTexture.width + playerTexture.width/2, screenY-screenY/2 - playerTexture.height + playerTexture.height/2 ,50,50};
 
     while (!WindowShouldClose())
     {
+        player.MovePlayer(&player.PlayerEntity);
+        physics.apply_gravity(&player.PlayerEntity.physicsObj);
+
         #pragma region RUN
         BeginDrawing();
 
         ClearBackground(SKYBLUE);
-        // DrawTexture(playerTexture, 0,0, RAYWHITE);
-        DrawTexturePro(
-            playerTexture, 
-            (Rectangle){ 0, 0, 32, 32 }, 
-            (Rectangle){ 10, 100, 100, 100 }, 
-            (Vector2){ 0, 0 }, 
-            0.0f, 
-            RAYWHITE
-        );
-        // DrawTexturePro(player.texture, {0, 0, 16, 16}, player.dest_rect, {0,0}, 0.0, RAYWHITE);
+        
+        DrawTexturePro(player.PlayerEntity.entitySprite.texture, {0,0,16,16}, player.PlayerEntity.entitySprite.dest_rect, {0,0},0, RAYWHITE);
 
         EndDrawing();
     }
