@@ -13,18 +13,15 @@ ResourceLoader::~ResourceLoader()
 
 bool ResourceLoader::loadResource(const std::string& path)
 {
-    if (glContext == true)
-    {
-        ;
-    }
+    return false;
 };
 
 bool ResourceLoader::unloadResource(const std::string& path)
 {
-    ;
+    return false;
 };
 
 bool ResourceLoader::unloadAll()
 {
-    ;
+    return false;
 };

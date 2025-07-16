@@ -1,9 +1,10 @@
 #include "base.h"
 #include "entity.h"
+#include "debug.h"
 
-Entity::Entity()
+Entity::Entity(const qTransform& t, const RenderStructure& r, const PhysicsObj& p)
 {
-    ;
+    init_entity(t, r ,p);
 };
 
 Entity::~Entity()
@@ -11,14 +12,22 @@ Entity::~Entity()
     ;
 };
 
-void Entity::load_entity_texture()
+void Entity::init_entity(const qTransform& t, const RenderStructure& r, const PhysicsObj& p)
 {
+    Debug::log("[Entity] Initializing entity!");
+    _data = {
+        t,
+        r,
+        p
+    };
 };
 
-void Entity::init_entity(Texture2D* texture)
+void Entity::load_entity_texture()
 {
+    ;
 };
 
 void Entity::remove_entity()
 {
+    ;
 };

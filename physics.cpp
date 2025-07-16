@@ -10,8 +10,3 @@ void Physics::apply_gravity(PhysicsObj* pObj)
         pObj->velocity.y = 200.0;
     }
 };
-
-void Physics::apply_velocity(Entity* entity)
-{
-    ;
-};

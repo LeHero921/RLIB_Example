@@ -1,5 +1,5 @@
 #pragma once
-#include "entity.h"
+#include "base.h"
 
 typedef struct PhysicsObj
 {
@@ -10,5 +10,4 @@ typedef struct PhysicsObj
 class Physics{
 public:
     void apply_gravity(PhysicsObj* pObj);
-    void apply_velocity(Entity* entity);
 };
