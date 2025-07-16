@@ -9,6 +9,17 @@ struct entityData
     PhysicsObj physicsObj;
 };
 
+struct entityConfig
+{
+    std::string texturePath;
+    Vector2 position;
+    Vector2 size;
+    Color tint = WHITE;
+    float rotation = 0.0f;
+    Vector2 velocity = {0, 0};
+    float mass = 1.0f;
+};
+
 
 class Entity
 {
@@ -18,7 +29,7 @@ public:
 
     entityData _data;
 
-    void init_entity(const qTransform& t, const RenderStructure& r, const PhysicsObj& p);
+    static Entity create_entity(const entityConfig& conf);
     void load_entity_texture();
     void remove_entity();
 };

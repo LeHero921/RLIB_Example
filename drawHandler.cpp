@@ -11,5 +11,5 @@ void DrawHandler::RenderEntity(const entityData& data)
         data.transform.rotation,
         data.renderer.tint
     );
-    Debug::log("[DrawHandler] Drew entity!");
+    // Debug::log("[DrawHandler] Drew entity!");
 };
