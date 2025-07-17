@@ -18,6 +18,7 @@ struct entityConfig
     float rotation = 0.0f;
     Vector2 velocity = {0, 0};
     float mass = 1.0f;
+    float speed;
 };
 
 

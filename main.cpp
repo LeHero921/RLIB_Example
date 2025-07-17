@@ -23,13 +23,14 @@ int main()
         WHITE,
         0,
         {0,0},
-        1
+        1,
+        100,
     };
     Entity player = Entity::create_entity(playerConf);
 
     while (!WindowShouldClose())
     {
-        // player.MovePlayer(&player.PlayerEntity);
+        Physics::move(&player._data.physicsObj, player._data.physicsObj.direction, player._data.physicsObj.speed);
 
         #pragma region RUN
         BeginDrawing();

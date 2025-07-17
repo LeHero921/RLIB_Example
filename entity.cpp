@@ -5,7 +5,6 @@
 
 Entity::Entity(const qTransform& t, const RenderStructure& r, const PhysicsObj& p)
 {
-    Debug::log("sidhufiusb");
     _data = {
         t,
         r,
@@ -28,17 +27,17 @@ Entity Entity::create_entity(const entityConfig& conf)
     };
     RenderStructure render = { spr, conf.tint };
     qTransform transform = { {0,0}, 0 };
-    PhysicsObj pObj = { conf.velocity, conf.mass };
+    PhysicsObj pObj = { conf.velocity, conf.mass, conf.speed };
 
     return Entity(transform, render, pObj);
 };
 
 void Entity::load_entity_texture()
 {
-    ;
+    Debug::throwNotImplemented();
 };
 
 void Entity::remove_entity()
 {
-    ;
+    Debug::throwNotImplemented();
 };
