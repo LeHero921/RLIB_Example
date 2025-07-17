@@ -3,6 +3,11 @@
 #include "debug.h"
 #include "drawHandler.h"
 #include "resourceLoader.h"
+#include "input.h"
+
+std::string ToString(const Vector2& v) {
+    return "(" + std::to_string(v.x) + ", " + std::to_string(v.y) + ")";
+}
 
 int main()
 {
@@ -15,6 +20,8 @@ int main()
 
     DrawHandler draw;
     Physics physics;
+    // Input input;
+    
 
     entityConfig playerConf = {
         "assets/monster.png",
@@ -30,7 +37,10 @@ int main()
 
     while (!WindowShouldClose())
     {
-        Physics::move(&player._data.physicsObj, player._data.physicsObj.direction, player._data.physicsObj.speed);
+        player._data.physicsObj.direction = Input::GetDirectionalInput();
+        Debug::log(ToString(player._data.physicsObj.direction));
+        physics.move(&player._data.physicsObj);
+        physics.apply_velocity(&player._data);
 
         #pragma region RUN
         BeginDrawing();

@@ -1,6 +1,5 @@
 #include "physics.h"
 #include "base.h"
-#include "entity.h"
 
 void Physics::apply_gravity(PhysicsObj* pObj)
 {
@@ -11,7 +10,14 @@ void Physics::apply_gravity(PhysicsObj* pObj)
     }
 };
 
-void Physics::move(PhysicsObj* pObj, Vector2 dir, float speed)
+void Physics::apply_velocity(entityData* _data)
 {
-    pObj->velocity.x = dir.x * speed * GetFrameTime();
+
+};
+
+void Physics::move(PhysicsObj* pObj)
+{
+    float speed = pObj->speed;
+    pObj->velocity.x = pObj->direction.x * speed * GetFrameTime();
+    pObj->velocity.y = pObj->direction.y * speed * GetFrameTime();
 };
