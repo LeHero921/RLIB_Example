@@ -6,7 +6,7 @@ void DrawHandler::RenderEntity(const entityData& data)
         data.renderer.sprite.texture,
         data.renderer.sprite.source_rect,
         data.renderer.sprite.dest_rect,
-        data.transform.position,
+        {0,0},
         data.transform.rotation,
         data.renderer.tint
     );

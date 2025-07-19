@@ -3,6 +3,10 @@
 #include "resourceLoader.h"
 #include "debug.h"
 
+std::string VToString(const Vector2& v) {
+    return "(" + std::to_string(v.x) + ", " + std::to_string(v.y) + ")";
+};
+
 Entity::Entity(const qTransform& t, const RenderStructure& r, const PhysicsObj& p)
 {
     _data = {
@@ -27,9 +31,19 @@ Entity Entity::create_entity(const entityConfig& conf)
     };
     RenderStructure render = { spr, conf.tint };
     qTransform transform = { {0,0}, 0 };
-    PhysicsObj pObj = { conf.velocity, conf.mass, conf.speed };
+    PhysicsObj pObj = { conf.velocity, conf.mass, {0,0}, conf.speed };
 
     return Entity(transform, render, pObj);
+};
+
+void Entity::update_entity_transform()
+{
+    _data.renderer.sprite.dest_rect.x = _data.transform.position.x;
+    _data.renderer.sprite.dest_rect.y = _data.transform.position.y;
+
+    // Vector2 a = {_data.renderer.sprite.dest_rect.x,_data.renderer.sprite.dest_rect.y};
+    // Debug::log("Entity Deb:");
+    // Debug::log(VToString(a));
 };
 
 void Entity::load_entity_texture()

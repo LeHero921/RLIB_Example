@@ -31,6 +31,7 @@ public:
     entityData _data;
 
     static Entity create_entity(const entityConfig& conf);
+    void update_entity_transform();
     void load_entity_texture();
     void remove_entity();
 };

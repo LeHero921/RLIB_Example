@@ -18,29 +18,31 @@ int main()
 
     //TODO: implement active glcontext validation
 
+    Base base;
     DrawHandler draw;
     Physics physics;
-    // Input input;
-    
 
     entityConfig playerConf = {
         "assets/monster.png",
-        {screenX/2 -50, screenY/2 -50},
+        {0,0},
         {100,100},
         WHITE,
         0,
         {0,0},
         1,
-        100,
+        230,
     };
     Entity player = Entity::create_entity(playerConf);
 
     while (!WindowShouldClose())
     {
-        player._data.physicsObj.direction = Input::GetDirectionalInput();
-        Debug::log(ToString(player._data.physicsObj.direction));
-        physics.move(&player._data.physicsObj);
-        physics.apply_velocity(&player._data);
+        Vector2 input_dir = Input::GetDirectionalInput();
+        player._data.physicsObj.direction = base.Normalize(input_dir);    // Get input
+        physics.move(&player._data.physicsObj);                           // Change velocity
+        physics.apply_velocity(&player._data); 
+        // todo: implement global update system
+        player.update_entity_transform();                                 // Set dest_rect to transform.pos
+        physics.apply_gravity(&player._data.physicsObj);                           // Add velocity to transform.pos
 
         #pragma region RUN
         BeginDrawing();

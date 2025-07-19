@@ -24,3 +24,10 @@ bool Base::valid_glCtx()
 {
     return true;
 };
+
+Vector2 Base::Normalize(const Vector2& v)
+{
+    float length = sqrtf(v.x * v.x + v.y * v.y);
+    if (length == 0.0f) return {0.0f, 0.0f};
+    return {v.x / length, v.y / length};
+};

@@ -28,6 +28,7 @@ public:
     bool IsValidSprite(const Sprite& sprite);
     bool IsValidRenderStructure(const RenderStructure& rs);
     bool valid_glCtx();
+    Vector2 Normalize(const Vector2& v);
 
     bool glContext;
 };
