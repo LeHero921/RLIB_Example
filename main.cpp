@@ -4,6 +4,7 @@
 #include "drawHandler.h"
 #include "resourceLoader.h"
 #include "input.h"
+#include "animation.h"
 
 std::string ToString(const Vector2& v) {
     return "(" + std::to_string(v.x) + ", " + std::to_string(v.y) + ")";
@@ -16,14 +17,19 @@ int main()
     SetConfigFlags(FLAG_WINDOW_HIGHDPI);
     InitWindow(screenX, screenY, "RayLib Example");
 
-    //TODO: implement active glcontext validation
+    //todo: implement active glcontext validation
 
     Base base;
     DrawHandler draw;
     Physics physics;
 
+    //* animation
+    Animator player_animator;
+    player_animator.setup_animation(6, {16,16}, 0.1);
+    //* animation end
+
     entityConfig playerConf = {
-        "assets/monster.png",
+        "assets/knight_run_spritesheet.png",
         {0,0},
         {100,100},
         WHITE,
@@ -48,8 +54,10 @@ int main()
         BeginDrawing();
         ClearBackground(SKYBLUE);
 
-        //TODO: Implement glContext validation securety!!!
-        draw.RenderEntity(player._data);
+        //todo: Implement glContext validation securety!!!
+        // draw.RenderEntity(player._data);
+        draw.RenderEntityAnimation(player._data, &player_animator);
+        player_animator.animation_update(&player_animator._animation);
 
         EndDrawing();
     }
