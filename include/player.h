@@ -1,6 +1,5 @@
 #pragma once
-#include "base.h"
-#include "entity.h"
+#include "QuantuumFrame/QuantuumFrame.h"
 
 class Player {
 public:

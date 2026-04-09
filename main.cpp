@@ -1,10 +1,5 @@
-#include "base.h"
+#include "QuantuumFrame/QuantuumFrame.h"
 #include "player.h"
-#include "debug.h"
-#include "drawHandler.h"
-#include "resourceLoader.h"
-#include "input.h"
-#include "animation.h"
 
 std::string ToString(const Vector2& v) {
     return "(" + std::to_string(v.x) + ", " + std::to_string(v.y) + ")";
