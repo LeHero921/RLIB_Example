@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# apple temp stuff
+._DS_Store
+*._DS_Store
